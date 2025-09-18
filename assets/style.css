@@ -1,0 +1,14 @@
+/* assets/style.css */
+body { font-family: Arial, sans-serif; background:#f7f7f7; color:#222; }
+.container { max-width:900px; margin:30px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+h1,h2 { margin-top:0; }
+.form-row { margin-bottom:12px; }
+label { display:block; font-weight:600; margin-bottom:6px; }
+input[type="text"], input[type="tel"] { width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; }
+button { padding:10px 14px; border:0; background:#007bff; color:#fff; border-radius:6px; cursor:pointer; }
+table { width:100%; border-collapse:collapse; margin-top:12px; }
+th,td { padding:8px; border-bottom:1px solid #eee; text-align:left; }
+.badge { display:inline-block; padding:4px 6px; border-radius:6px; font-size:13px; }
+.badge-w { background:#ffeeba; color:#8a6d3b; }
+.badge-c { background:#cce5ff; color:#004085; }
+.badge-s { background:#d4edda; color:#155724; }
