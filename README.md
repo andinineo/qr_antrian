@@ -6,34 +6,45 @@ Pasien dapat memilih poli, mengambil nomor antrian, dan mendapatkan QR Code yang
 ---
 
 ## 🚀 Fitur Utama
-- Ambil nomor antrian per **poli** (Umum, Gigi, Anak, dll)
-- Generate **QR Code** otomatis untuk setiap nomor antrian
-- Tampilan web modern dengan **Navbar + Container**
-- Laporan daftar pasien & nomor antrian
+- Ambil nomor antrian per poli (Umum, Gigi, Anak, dll)
+- Generate QR Code otomatis untuk setiap nomor antrian
+- Halaman admin untuk mengelola antrian
+- Laporan daftar pasien dan nomor antrian
+- Tampilan web modern dengan Navbar dan Container
 - Database MySQL terhubung ke PHP
 
 ---
 
 ## 📂 Struktur Folder
 qr_antrian/
-│── config.php # Konfigurasi database
-│── index.php # Halaman utama (ambil nomor antrian)
-│── generate_qr.php # Proses generate nomor + QR
-│── scan.php # Halaman scan QR (opsional)
-│── laporan.php # Laporan daftar antrian
-│── header.php # Navbar & pembuka HTML
-│── footer.php # Footer & penutup HTML
-│
-│── assets/
-│ ├── css/
-│ │ └── style.css # File CSS utama
-│ ├── qr/ # Folder hasil generate QR
-│ └── qrlib.php # Library QR Code
+├── assets/ # File gambar dan aset lainnya
+├── sgl/ # File SQL dan database
+├── index.php # Halaman utama
+├── register.php # Halaman pendaftaran pasien
+├── checkin.php # Halaman check-in pasien
+├── call_next.php # Halaman untuk memanggil pasien berikutnya
+├── admin.php # Halaman admin
+├── config.php # Konfigurasi database
+├── header.php # Header tampilan web
+├── footer.php # Footer tampilan web
+└── README.md # Dokumentasi proyek
 
 ---
 
-## 🛠️ Instalasi & Setup
 
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/username/qr_antrian.git
+## 🚀 Cara Menjalankan Aplikasi
+
+1. Clone repositori:
+
+```bash
+git clone https://github.com/andinineo/qr_antrian.git
+
+Impor file sgl/qr_antrian.sql ke MySQL.
+
+Sesuaikan konfigurasi database di config.php:
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'qr_antrian';
+
+
