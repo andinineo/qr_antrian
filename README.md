@@ -48,3 +48,7 @@ $password = '';
 $dbname = 'qr_antrian';
 
 
+
+📄 Lisensi / License
+
+Lisensi belum ditentukan / default MIT (sesuaikan dengan yang kamu pilih). 
