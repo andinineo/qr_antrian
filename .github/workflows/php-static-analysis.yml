@@ -1,0 +1,37 @@
+name: PHP Static Analysis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    paths: 
+      - '**.php'
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'  # sesuaikan versi PHP kamu
+
+      - name: Install dependencies
+        run: |
+          if [ -f composer.json ]; then
+            composer install --no-progress --no-suggest --prefer-dist
+          fi
+
+      - name: Run PHPStan
+        run: |
+          composer require --dev phpstan/phpstan
+          vendor/bin/phpstan analyse --level=max .
+
+      - name: Run PHP_CodeSniffer
+        run: |
+          composer require --dev squizlabs/php_codesniffer
+          vendor/bin/phpcs --standard=PSR12 .
