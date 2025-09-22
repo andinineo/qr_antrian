@@ -7,26 +7,20 @@ on:
     branches: [ "main" ]
 
 jobs:
-  phpstan:
+  static-analysis:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        php-versions: [ "8.1" ]
-        phpstan-level: [ "5" ] # bisa ganti ke 7 atau max kalau kode sudah siap
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          tools: composer
+          php-version: '8.1'
 
       - name: Install dependencies
         run: composer install --no-progress --no-suggest --prefer-dist
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse --no-progress --level=${{ matrix.phpstan-level }} --memory-limit=512M
+        run: vendor/bin/phpstan analyse src --level=max
