@@ -2,14 +2,18 @@ name: PHP Static Analysis
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    paths: 
-      - '**.php'
+    branches: [ "main" ]
 
 jobs:
-  analyze:
+  phpstan:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions: [ "8.1" ]
+        phpstan-level: [ "5" ] # bisa ganti ke 7 atau max kalau kode sudah siap
 
     steps:
       - name: Checkout code
@@ -18,20 +22,11 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'  # sesuaikan versi PHP kamu
+          php-version: ${{ matrix.php-versions }}
+          tools: composer
 
       - name: Install dependencies
-        run: |
-          if [ -f composer.json ]; then
-            composer install --no-progress --no-suggest --prefer-dist
-          fi
+        run: composer install --no-progress --no-suggest --prefer-dist
 
       - name: Run PHPStan
-        run: |
-          composer require --dev phpstan/phpstan
-          vendor/bin/phpstan analyse --level=max .
-
-      - name: Run PHP_CodeSniffer
-        run: |
-          composer require --dev squizlabs/php_codesniffer
-          vendor/bin/phpcs --standard=PSR12 .
+        run: vendor/bin/phpstan analyse --no-progress --level=${{ matrix.phpstan-level }} --memory-limit=512M

@@ -1,0 +1,23 @@
+{
+    "name": "andinineo/qr_antrian",
+    "description": "Aplikasi Web Antrian Rumah Sakit menggunakan QR Code",
+    "type": "project",
+    "require": {
+        "php": "^8.0",
+        "endroid/qr-code": "^4.8",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "QrAntrian\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andi Nineo",
+            "email": "your-email@example.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "license": "MIT"
+}
